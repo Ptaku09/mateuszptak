@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    html, body {
+        margin: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+        background: rgb(41 37 36);
+    }
+
+    *, *::after, *::before {
+        box-sizing: inherit;
+    }
+
+    ::-webkit-scrollbar {
+        display: none;
+    }
+}
