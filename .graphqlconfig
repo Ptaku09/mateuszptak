@@ -1,0 +1,16 @@
+{
+  "name": "DatoCMS graphql endpoint",
+  "schemaPath": "schema.graphql",
+  "extensions": {
+    "endpoints": {
+      "Remote GraphQL Endpoint": {
+        "url": "https://graphql.datocms.com/",
+        "headers": {
+          "user-agent": "JS GraphQL",
+          "authorization": "Bearer ${env:DATOCMS_READ_ONLY_API_TOKEN}"
+        },
+        "introspect": false
+      }
+    }
+  }
+}
