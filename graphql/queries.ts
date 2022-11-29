@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 import client from './index';
-import { MainProjectListQuery, MainProjectListQueryVariables, SideProjectListQuery, SideProjectListQueryVariables } from './types';
+import { AllProjectsListQuery, AllProjectsListQueryVariables } from 'graphql/types';
 
 const PROJECT_DATA_FRAGMENT = gql`
   fragment Project on ProjectRecord {
@@ -9,40 +9,18 @@ const PROJECT_DATA_FRAGMENT = gql`
     description
     livePreview
     name
-    photos {
-      id
-      url
-      alt
-      blurUpThumb(quality: 10)
-    }
     techStack
+    main
   }
 `;
 
-export const MAIN_PROJECT_LIST_QUERY = gql`
+export const ALL_PROJECTS_LIST_QUERY = gql`
   ${PROJECT_DATA_FRAGMENT}
-  query MainProjectList {
-    allProjects(filter: { main: { eq: "true" } }) {
+  query AllProjectsList {
+    allProjects {
       ...Project
     }
   }
 `;
 
-export const SIDE_PROJECT_LIST_QUERY = gql`
-  ${PROJECT_DATA_FRAGMENT}
-  query SideProjectList {
-    allProjects(filter: { main: { eq: "false" } }) {
-      ...Project
-    }
-  }
-`;
-
-export const fetchMainProjects = () =>
-  client.query<MainProjectListQuery, MainProjectListQueryVariables>({
-    query: MAIN_PROJECT_LIST_QUERY,
-  });
-
-export const fetchSideProjects = () =>
-  client.query<SideProjectListQuery, SideProjectListQueryVariables>({
-    query: SIDE_PROJECT_LIST_QUERY,
-  });
+export const fetchAllProjects = () => client.query<AllProjectsListQuery, AllProjectsListQueryVariables>({ query: ALL_PROJECTS_LIST_QUERY });

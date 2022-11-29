@@ -1,11 +1,27 @@
-import type { NextPage } from 'next';
+import type { GetStaticProps } from 'next';
 import Spline from '@splinetool/react-spline';
 import useMobileDetect from 'hooks/useMobileDetect';
 import HighlightedText from 'components/atoms/HighlightedText';
 import TopBar from 'components/molecules/TopBar';
 import PurpleText from 'components/atoms/PurpleText';
+import { ProjectFragment } from 'graphql/types';
+import { fetchAllProjects } from 'graphql/queries';
 
-const Home: NextPage = () => {
+type Props = {
+  projects: ProjectFragment[];
+};
+
+export const getStaticProps: GetStaticProps<Props> = async (context) => {
+  const projects = await fetchAllProjects();
+
+  return {
+    props: {
+      projects: projects.data.allProjects || [],
+    },
+  };
+};
+
+const Home = ({ projects }: Props) => {
   const { isMobile } = useMobileDetect();
 
   return (
@@ -14,6 +30,7 @@ const Home: NextPage = () => {
       <div className="w-full h-full p-2 rounded-lg bg-color-corners">
         <div className="relative w-full h-full px-5 py-2 bg-stone-800 text-white font-silkscreen rounded-sm overflow-hidden">
           <TopBar />
+
           <div className="mt-10">
             <div className="flex gap-2 flex-col">
               <p className="text-sm">Hi, my name is</p>
@@ -31,6 +48,19 @@ const Home: NextPage = () => {
               </p>
               <p>Besides programming, I&apos;m interested in football ⚽.</p>
             </div>
+          </div>
+
+          <div className="absolute bottom-12 w-full flex items-start flex-col">
+            <div className="w-full flex justify-center mb-3">
+              <h2 className="relative text-xl before:absolute before:-left-14 before:top-1/2 before:w-10 before:h-0.5 before:bg-purple-500 after:absolute after:-right-14 after:top-1/2 after:w-10 after:h-0.5 after:bg-purple-500">
+                projects
+              </h2>
+            </div>
+            <ul className="flex flex-col gap-3">
+              {projects.map((project: ProjectFragment) => (
+                <li key={project.id}>{project.name}</li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

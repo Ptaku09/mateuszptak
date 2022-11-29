@@ -2371,14 +2371,9 @@ export type FocalPoint = {
   y: Scalars['FloatType'];
 };
 
-export type ProjectFragment = { __typename?: 'ProjectRecord', id: any, githubRepo?: string | null, description?: string | null, livePreview?: string | null, name?: string | null, techStack?: any | null, photos: Array<{ __typename?: 'FileField', id: any, url: string, alt?: string | null, blurUpThumb?: string | null }> };
+export type ProjectFragment = { __typename?: 'ProjectRecord', id: any, githubRepo?: string | null, description?: string | null, livePreview?: string | null, name?: string | null, techStack?: any | null, main?: any | null };
 
-export type MainProjectListQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type MainProjectListQuery = { __typename?: 'Query', allProjects: Array<{ __typename?: 'ProjectRecord', id: any, githubRepo?: string | null, description?: string | null, livePreview?: string | null, name?: string | null, techStack?: any | null, photos: Array<{ __typename?: 'FileField', id: any, url: string, alt?: string | null, blurUpThumb?: string | null }> }> };
-
-export type SideProjectListQueryVariables = Exact<{ [key: string]: never; }>;
+export type AllProjectsListQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type SideProjectListQuery = { __typename?: 'Query', allProjects: Array<{ __typename?: 'ProjectRecord', id: any, githubRepo?: string | null, description?: string | null, livePreview?: string | null, name?: string | null, techStack?: any | null, photos: Array<{ __typename?: 'FileField', id: any, url: string, alt?: string | null, blurUpThumb?: string | null }> }> };
+export type AllProjectsListQuery = { __typename?: 'Query', allProjects: Array<{ __typename?: 'ProjectRecord', id: any, githubRepo?: string | null, description?: string | null, livePreview?: string | null, name?: string | null, techStack?: any | null, main?: any | null }> };
