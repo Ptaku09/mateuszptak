@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       animation: {
         text: 'text 5s ease infinite',
+        slider: 'slider 10s linear infinite',
       },
       keyframes: {
         text: {
@@ -17,6 +18,14 @@ module.exports = {
             'background-position': 'right center',
           },
         },
+        slider: {
+          '0%': {
+            transform: 'translateX(0)',
+          },
+          '100%': {
+            transform: 'translateX(calc(-5 * 10rem))',
+          },
+        },
       },
       backgroundImage: {
         'color-corners':
@@ -26,6 +35,9 @@ module.exports = {
         silkscreen: ['Silkscreen', 'monospace'],
         permanent: ['Permanent Marker', 'cursive'],
         pacifico: ['Pacifico', 'cursive'],
+      },
+      maxHeight: {
+        '9/10': '90%',
       },
     },
   },
