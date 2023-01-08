@@ -9,7 +9,6 @@ import { useEffect, useRef, useState } from 'react';
 import PurpleText from 'components/atoms/PurpleText';
 import Slider from 'components/organisms/Slider';
 import anime, { AnimeTimelineInstance } from 'animejs';
-import LoadingScreen from '../components/organisms/LoadingScreen';
 
 type Props = {
   projects: ProjectFragment[];
@@ -60,8 +59,6 @@ const Home = ({ projects }: Props) => {
       <div className="w-full h-full p-2 rounded-lg bg-color-corners">
         <div className="relative w-full h-full px-5 py-2 bg-stone-800 text-white font-silkscreen rounded-sm overflow-hidden">
           <TopBar />
-
-          <LoadingScreen />
 
           <div className="mt-10">
             <div className="title flex gap-2 flex-col">
