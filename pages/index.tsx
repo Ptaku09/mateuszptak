@@ -2,13 +2,14 @@ import type { GetStaticProps } from 'next';
 import useMobileDetect from 'hooks/useMobileDetect';
 import { ProjectFragment } from 'graphql/types';
 import { fetchAllProjects } from 'graphql/queries';
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import anime, { AnimeTimelineInstance } from 'animejs';
 import TopBar from '../components/molecules/TopBar';
 import HighlightedText from '../components/atoms/HighlightedText';
 import Slider from '../components/organisms/Slider';
 import PurpleText from '../components/atoms/PurpleText';
 import Spline from '@splinetool/react-spline';
+import { LoadingStatusContext } from '../providers/LoadingStatusProvider';
 
 type Props = {
   projects: ProjectFragment[];
@@ -28,6 +29,7 @@ const Home = ({ projects }: Props) => {
   const { width } = useMobileDetect();
   const [carouselIndex, setCarouselIndex] = useState(-1);
   const animationRef = useRef<AnimeTimelineInstance>();
+  const { setAppLoaded } = useContext(LoadingStatusContext);
 
   useEffect(() => {
     animationRef.current = anime.timeline({
@@ -57,7 +59,9 @@ const Home = ({ projects }: Props) => {
     <div className="h-screen w-screen xl:grid xl:grid-cols-[1fr_1280px_1fr]">
       <div className="w-full h-full xl:col-start-2 p-2 rounded-lg bg-color-corners">
         <div className="relative w-full h-full md:flex md:flex-col md:items-center xl:block px-5 py-2 bg-stone-800 text-white font-silkscreen rounded-sm overflow-hidden">
-          {width > 1280 && <Spline className="absolute z-0" scene="https://prod.spline.design/byrEA1hu6JsTNFD8/scene.splinecode" />}
+          {width > 1280 && (
+            <Spline className="absolute z-0" onLoad={() => setAppLoaded(true)} scene="https://prod.spline.design/byrEA1hu6JsTNFD8/scene.splinecode" />
+          )}
           <TopBar />
 
           <div className="mt-10 md:w-1/2 xl:relative xl:z-10 xl:mt-20 xl:ml-7 xl:w-2/5 xl:pointer-events-none">
