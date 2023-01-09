@@ -6,13 +6,18 @@ import Logo from 'components/atoms/Logo';
 
 const TopBar = () => {
   return (
-    <div className="w-full flex justify-between">
+    <div className="w-full xl:relative flex justify-between xl:pointer-events-none">
       <Logo />
       <div className="flex justify-center items-center gap-4">
-        <a href="https://github.com/Ptaku09" target="_blank" rel="noreferrer">
+        <a className="xl:cursor-pointer xl:pointer-events-auto" href="https://github.com/Ptaku09" target="_blank" rel="noreferrer">
           <Image src={GithubIcon} alt="github" width={25} height={25} />
         </a>
-        <a href="https://www.linkedin.com/in/mateusz-ptak-2b9478258/" target="_blank" rel="noreferrer">
+        <a
+          className="xl:cursor-pointer xl:pointer-events-auto"
+          href="https://www.linkedin.com/in/mateusz-ptak-2b9478258/"
+          target="_blank"
+          rel="noreferrer"
+        >
           <Image src={LinkedinIcon} alt="linkedin" width={20} height={20} />
         </a>
       </div>
