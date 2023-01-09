@@ -1,5 +1,5 @@
 import type { GetStaticProps } from 'next';
-import useMobileDetect from 'hooks/useMobileDetect';
+import useBreakpointDetect from 'hooks/useBreakpointDetect';
 import { ProjectFragment } from 'graphql/types';
 import { fetchAllProjects } from 'graphql/queries';
 import { useContext, useEffect, useRef, useState } from 'react';
@@ -26,7 +26,7 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
 };
 
 const Home = ({ projects }: Props) => {
-  const { width } = useMobileDetect();
+  const { isBlob } = useBreakpointDetect();
   const [carouselIndex, setCarouselIndex] = useState(-1);
   const animationRef = useRef<AnimeTimelineInstance>();
   const { setAppLoaded } = useContext(LoadingStatusContext);
@@ -59,7 +59,7 @@ const Home = ({ projects }: Props) => {
     <div className="h-screen w-screen xl:grid xl:grid-cols-[1fr_1280px_1fr]">
       <div className="w-full h-full xl:col-start-2 p-2 rounded-lg bg-color-corners">
         <div className="relative w-full h-full md:flex md:flex-col md:items-center xl:block px-5 py-2 bg-stone-800 text-white font-silkscreen rounded-sm overflow-hidden">
-          {width > 1280 && (
+          {isBlob && (
             <Spline className="absolute z-0" onLoad={() => setAppLoaded(true)} scene="https://prod.spline.design/byrEA1hu6JsTNFD8/scene.splinecode" />
           )}
           <TopBar />
