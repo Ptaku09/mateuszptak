@@ -6,7 +6,7 @@ import Logo from 'components/atoms/Logo';
 
 const TopBar = () => {
   return (
-    <div className="w-full xl:relative flex justify-between xl:pointer-events-none">
+    <div className="w-full absolute z-10 flex justify-between px-5 pt-2 xl:pointer-events-none">
       <Logo />
       <div className="flex justify-center items-center gap-4">
         <a className="xl:cursor-pointer xl:pointer-events-auto" href="https://github.com/Ptaku09" target="_blank" rel="noreferrer">
