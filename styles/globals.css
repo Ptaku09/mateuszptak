@@ -6,8 +6,8 @@
     html, body {
         margin: 0;
         box-sizing: border-box;
+        overflow-x: clip;
         scroll-behavior: smooth;
-        overflow-x: hidden;
         background: rgb(41 37 36);
     }
 

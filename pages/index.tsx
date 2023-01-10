@@ -62,7 +62,7 @@ const Home = ({ projects }: Props) => {
       )}
 
       <div className="w-full h-full xl:col-start-2 xl:row-start-2 p-2 rounded-lg bg-color-corners">
-        <div className="w-full h-full relative flex flex-col justify-between items-center xl:items-start bg-stone-800 text-white font-silkscreen rounded-sm overflow-y-auto xl:overflow-hidden">
+        <div className="w-full h-full relative flex flex-col justify-between items-center xl:items-start bg-stone-800 text-white font-silkscreen rounded-sm overflow-y-auto">
           <TopBar />
 
           <div className="w-full md:w-1/2 xl:w-2/5 xl:relative xl:z-10 mt-24 md:mt-32 xl:ml-7 px-5 py-2 xl:pointer-events-none">
