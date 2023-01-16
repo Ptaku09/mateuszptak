@@ -7,9 +7,9 @@ import anime, { AnimeTimelineInstance } from 'animejs';
 import TopBar from '../components/molecules/TopBar';
 import HighlightedText from '../components/atoms/HighlightedText';
 import Slider from '../components/organisms/Slider';
-import PurpleText from '../components/atoms/PurpleText';
 import Spline from '@splinetool/react-spline';
 import { LoadingStatusContext } from '../providers/LoadingStatusProvider';
+import Bio from '../components/molecules/Bio';
 
 type Props = {
   projects: ProjectFragment[];
@@ -93,20 +93,7 @@ const Home = ({ projects }: Props) => {
             </div>
 
             <div className="description h-auto relative flex flex-col gap-2 mt-6 text-sm text-slate-200 before:absolute before:-left-4 before:w-0.5 before:h-full before:bg-gradient-to-tr before:from-indigo-500 before:to-purple-500">
-              {carouselIndex !== -1 ? (
-                <p>{carouselIndex !== -1 && projects[carouselIndex].description}</p>
-              ) : (
-                <>
-                  <p>
-                    I&apos;m React developer based in Wroclaw, Poland. I&apos;m currently in 2nd year of{' '}
-                    <PurpleText>Applied Computer Science</PurpleText> at Wroclaw University of Science and Technology.
-                  </p>
-                  <p>
-                    I started learning frontend technologies in <PurpleText>May 2021</PurpleText>.
-                  </p>
-                  <p>Besides programming, I&apos;m interested in football ⚽.</p>
-                </>
-              )}
+              {carouselIndex !== -1 ? <p>{carouselIndex !== -1 && projects[carouselIndex].description}</p> : <Bio />}
             </div>
 
             <div className="links">
