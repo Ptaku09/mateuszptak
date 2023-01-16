@@ -1,12 +1,14 @@
 import type { GetStaticProps } from 'next';
 import { ProjectFragment } from 'graphql/types';
 import { fetchAllProjects } from 'graphql/queries';
-import { useEffect, useRef, useState } from 'react';
+import { ReactElement, useEffect, useRef, useState } from 'react';
 import anime, { AnimeTimelineInstance } from 'animejs';
 import TopBar from '../components/molecules/TopBar';
 import HighlightedText from '../components/atoms/HighlightedText';
 import Slider from '../components/organisms/Slider';
 import Bio from '../components/molecules/Bio';
+import Layout from '../components/templates/Layout';
+import { NextPageWithLayout } from './_app';
 
 type Props = {
   projects: ProjectFragment[];
@@ -22,7 +24,7 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
   };
 };
 
-const Home = ({ projects }: Props) => {
+const Home: NextPageWithLayout = ({ projects }: Props) => {
   const [carouselIndex, setCarouselIndex] = useState(-1);
   const animationRef = useRef<AnimeTimelineInstance>();
 
@@ -138,5 +140,7 @@ const Home = ({ projects }: Props) => {
     </div>
   );
 };
+
+Home.getLayout = (page: ReactElement) => <Layout>{page}</Layout>;
 
 export default Home;
