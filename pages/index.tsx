@@ -9,6 +9,7 @@ import Slider from '../components/organisms/Slider';
 import Bio from '../components/molecules/Bio';
 import Layout from '../components/templates/Layout';
 import { NextPageWithLayout } from './_app';
+import Name from '../components/molecules/Name';
 
 type Props = {
   projects: ProjectFragment[];
@@ -67,12 +68,7 @@ const Home: NextPageWithLayout = ({ projects }: Props) => {
                 </h1>
               </>
             ) : (
-              <>
-                <p className="text-sm">Hi, my name is</p>
-                <h1 className="block text-4xl font-permanent">
-                  <HighlightedText>Mateusz Ptak</HighlightedText>
-                </h1>
-              </>
+              <Name />
             )}
           </div>
 
