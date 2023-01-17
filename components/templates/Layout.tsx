@@ -11,7 +11,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <LoadingScreen />
-      <div className="h-[900px] xl:h-screen w-screen xl:grid xl:grid-cols-[1fr_1280px_1fr] xl:grid-rows-[1fr_890px_1fr]">
+      <div className="h-[900px] md:h-screen w-screen md:grid md:grid-rows-[1fr_700px_1fr] xl:grid-cols-[1fr_1280px_1fr] xl:grid-rows-[1fr_890px_1fr]">
         {isBlob && (
           <Spline className="absolute z-10" onLoad={() => setAppLoaded(true)} scene="https://prod.spline.design/byrEA1hu6JsTNFD8/scene.splinecode" />
         )}

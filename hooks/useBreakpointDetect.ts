@@ -8,12 +8,12 @@ const useBreakpointDetect = () => {
   useEffect(() => {
     setWidth(window.innerWidth);
     setIsMobile(window.innerWidth < 768);
-    setIsBlob(window.innerWidth > 1280);
+    setIsBlob(window.innerWidth >= 1280);
 
     const handleResize = () => {
       setWidth(window.innerWidth);
       setIsMobile(window.innerWidth < 768);
-      setIsBlob(window.innerWidth > 1280);
+      setIsBlob(window.innerWidth >= 1280);
     };
 
     window.addEventListener('resize', handleResize);

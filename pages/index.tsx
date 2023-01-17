@@ -54,11 +54,13 @@ const Home: NextPageWithLayout = ({ projects }: Props) => {
   }, []);
 
   return (
-    <div className="w-full h-full xl:col-start-2 xl:row-start-2 p-2 rounded-lg bg-color-corners">
-      <div className="w-full h-full relative flex flex-col justify-between items-center xl:items-start bg-stone-800 text-white font-silkscreen rounded-sm">
-        <TopBar />
+    <div className="w-full h-full md:row-start-2 xl:col-start-2 p-2 rounded-lg bg-color-corners">
+      <div className="w-full h-full relative flex flex-col justify-between items-center md:grid md:grid-cols-2 md:grid-rows-[auto_1fr] xl:flex xl:flex-col xl:justify-between xl:items-start bg-stone-800 text-white font-silkscreen rounded-sm">
+        <div className="w-full md:row-start-1 md:col-span-2">
+          <TopBar />
+        </div>
 
-        <div className="w-full md:w-1/2 xl:w-2/5 xl:relative xl:z-10 mt-24 md:mt-32 xl:ml-7 px-5 py-2 xl:pointer-events-none">
+        <div className="w-full xl:w-2/5 md:h-full xl:relative xl:z-10 md:col-start-1 md:flex md:justify-start md:flex-col py-2 md:pt-28 xl:pt-0 xl:pt-32 px-5 md:px-10 xl:px-0 xl:ml-7 xl:pointer-events-none">
           <div className="title flex flex-col gap-2">
             {carouselIndex !== -1 ? (
               <>
@@ -108,7 +110,7 @@ const Home: NextPageWithLayout = ({ projects }: Props) => {
           </div>
         </div>
 
-        <div className="w-full md:w-1/2 xl:w-1/3 relative z-10 flex items-start flex-col mt-10 mb-5 xl:ml-7 px-5 xl:pointer-events-none">
+        <div className="w-full xl:w-1/3 md:h-full xl:h-auto relative z-10 md:col-start-2 flex items-start md:justify-end xl:justify-start flex-col p-5 pt-10 md:pr-7 md:pb-8 xl:pl-7 xl:px-5 xl:pb-5 xl:pointer-events-none">
           <div className="w-full flex justify-center mb-3">
             <h2 className="relative text-xl before:absolute before:-left-14 before:top-1/2 before:w-10 before:h-0.5 before:bg-gradient-to-l before:from-indigo-500 before:to-purple-500 after:absolute after:-right-14 after:top-1/2 after:w-10 after:h-0.5 after:bg-gradient-to-r after:from-indigo-500 after:to-purple-500">
               projects
